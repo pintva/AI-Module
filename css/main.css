@@ -4,10 +4,11 @@ html, body {
 
 .continer {
     display: grid;
-    height: 100%;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: .5rem .5rem;
+    background: url("../images/module.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    grid-template-rows: repeat(35, 1fr);
+    grid-template-columns: repeat(50, 1fr);
 }
 
 .continer .item {
@@ -15,54 +16,46 @@ html, body {
 }
 
 .continer .item-1 {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 4;
-    background-color: blueviolet;
+    grid-column: 3 / span 6;
+    grid-row: 11 / span 15;
 }
 
 .continer .item-2 {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-column: 2 / span 2;
-    grid-row: 1 / span 4;
-    background-color: aqua;
+    grid-template-rows: repeat(21, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    grid-column: 10 / span 12;
+    grid-row: 6 / span 21;
 }
 
 .continer .item-2 .item-2-1 {
-    background-color: gold;
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
+    grid-column: 2 / span 6;
+    grid-row: 6 / span 3;
 }
 
 .continer .item-2 .item-2-2 {
-    background-color: goldenrod;
-    grid-column: 1 / span 1;
-    grid-row: 3 / span 1;
+    grid-column: 2 / span 6;
+    grid-row: 11 / span 4;
 }
 
 .continer .item-2 .item-2-3 {
-    background-color: yellowgreen;
-    grid-column: 1 / span 1;
-    grid-row: 4 / span 1;
+    grid-column: 2 / span 6;
+    grid-row: 17 / span 4;
 }
 
 .continer .item-3 {
-    grid-column: 4 / span 1;
-    grid-row: 1 / span 4;
-    background-color: cadetblue;
+    grid-column: 24 / span 4;
+    grid-row: 11 / span 16;
 }
 
 .continer .item-4 {
-    grid-column: 5 / span 1;
-    grid-row: 1 / span 4;
-    background-color: darkgreen;
+    grid-column: 29 / span 10;
+    grid-row: 11 / span 16;
 }
 
 .continer .item-5 {
-    grid-column: 1 / span 5;
-    grid-row: 5 / span 1;
-    background-color: coral
+    grid-column: 4 / span 34;
+    grid-row: 30 / span 5;
 }
 
 #overlay {
@@ -84,10 +77,16 @@ html, body {
 .detail-panel .detail {
     display: none;
     margin: 0 auto;
-    padding-top: 10%;
+    padding-top: 5%;
     width: 85%;
 }
 
 .detail-panel .detail .detail-title {
-    font-size: 24px;
+    padding: .5rem 0;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.detail-panel .detail p {
+    line-height: 1.5rem;
 }

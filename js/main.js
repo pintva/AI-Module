@@ -1,7 +1,19 @@
 window.onload = function(){
+
+    let continer = document.getElementById('continer')
     let items = document.getElementsByClassName('item')
     let overlay = document.getElementById('overlay')
     
+    function iniContinerHeight(){
+        continer.style.height = continer.offsetWidth / 10 * 7 + 'px'
+    }
+
+    iniContinerHeight()
+
+    window.addEventListener('resize', function(e) {
+        iniContinerHeight()
+    })
+
     for (const key in items) {
         if (items.hasOwnProperty(key)) {
             const item = items[key]
