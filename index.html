@@ -12,6 +12,7 @@
     <link rel="shortcut icon" href="https://assets.alicdn.com/p/mall/base/favicon.ico" type="image/x-icon">
     <link href="https://img.alicdn.com/tps/i1/T1zo51XxXfXXXeOHro-144-144.png" rel="apple-touch-icon-precomposed">
     <link rel="stylesheet" href="https://g.alicdn.com/halo-msite-biz/trade-refund/0.6.15/detail/index.bundle.css"></head>
+  <style>input{ outline-style: none ; border: 1px solid #ccc; border-radius: 3px; padding: 6px; width: 300px; font-size: 14px; font-family: "Microsoft soft"; } input:focus{ border-color: #66afe9; outline: 0; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6); box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) } textarea{ outline-style: none ; border: 1px solid #ccc; border-radius: 3px; padding: 6px; width: 300px; font-size: 14px; font-family: "Microsoft soft"; } textarea:focus{ border-color: #66afe9; outline: 0; -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6); box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) } .normalBtn{ position: relative; display: inline-block; margin-right: .66666667rem; padding: 0 .66666667rem; border: .06666667rem solid #bababa; margin-top: .4rem; line-height: 1.86666667rem; min-width: 5.33333333rem; font-size: .93333333rem; color: #666; border-radius: 3.33333333rem; text-align: center; vertical-align: middle; box-sizing: border-box; }</style>
   
   <body style="padding-bottom: calc(env(--windvane-safe-area-inset-bottom, env(safe-area-inset-bottom)));">
     <div id="container" style="margin: 0px auto; width: 25rem;">
@@ -218,60 +219,56 @@
                 <span class="title">撤销申请</span></div>
             </div>
           </div>
-          <div style="height: 61px;"></div>
           <div data-role="x-node" data-type="view" data-id="refundBuryData_20" style="position: fixed; top: 0rem; left: 0rem; width: 0rem; height: 0rem; opacity: 0; z-index: -99; overflow: hidden; background-color: transparent;"></div>
         </div>
       </div>
-      <div id="modifyPanel" style="width: 10rem; height: 30rem;">
+      <div id="modifyPanel" style="width: 10rem; height: 32rem; padding: 0 10px;">
         <form>
-            <!-- <div>
-              <label>智能识别地址：<textarea id="inputSmart" required></textarea></label>
-            </div> -->
+          <div>
+            <label>智能填写：</label>
             <div>
-              <label>智能填写：</label>
-              <div>
-                  <textarea style="width: 350px; height: 80px;" id="smarty", name="" required lay-verify="required" placeholder="请输入或粘贴文本，自动识别姓名、电话和地址" class="layui-textarea"></textarea>
-              </div>
+              <textarea style="width: 350px; height: 80px;" id="smarty" , name="" required lay-verify="required" placeholder="请输入或粘贴文本，自动识别姓名、电话和地址" class="layui-textarea"></textarea>
             </div>
-            <div id="btnSmarty" style="width: 2rem; height: 2rem;"><span>识别</span></div>
-            <div>
-              <label>姓名：<input id="inputName" type="text" required></label>
-            </div>
-            <div>
-              <label>手机号：<input id="inputPhone" type="tel" required></label>
-            </div>
-            <div>
-              <label>地址：<textarea style="width: 350px; height: 60px;" id="inputAddress" required></textarea></label>
-            </div>
-            <div id="btnModify"><span>提交</span></div>
-          </form>
+          </div>
+          <div id="btnSmarty" class="button-item normal single-line normalBtn">
+            <span class="title">识别</span></div>
+          <div>
+            <label>姓名：
+              <input id="inputName" type="text" required></label></div>
+          <div>
+            <label>手机号：
+              <input id="inputPhone" type="tel" required></label></div>
+          <div>
+            <label>地址：
+              <textarea style="width: 350px; height: 60px;" id="inputAddress" required></textarea></label>
+          </div>
+          <div id="btnModify" class="button-item normal single-line normalBtn">
+            <span class="title">提交</span></div>
+        </form>
       </div>
     </div>
   </body>
   <script src="js/pcasCode.js"></script>
   <script src="js/zipCode.js"></script>
   <script src="js/address_parse.js"></script>
-  <script>
+  <script>const btnSmarty = document.getElementById("btnSmarty");
 
-      const btnSmarty = document.getElementById("btnSmarty");
-      
+    btnSmarty.onclick = function() {
+      let smarty = document.getElementById("smarty").value;
+      let obj = smart(smarty);
 
-      btnSmarty.onclick = function() {
-        let smarty = document.getElementById("smarty").value;
-        let obj= smart(smarty);
-      
-        document.getElementById("inputName").value = obj.name;
-        document.getElementById("inputPhone").value = obj.phone;
-        document.getElementById("inputAddress").value = obj.province+obj.city+obj.county+obj.street+obj.address;
+      document.getElementById("inputName").value = obj.name;
+      document.getElementById("inputPhone").value = obj.phone;
+      document.getElementById("inputAddress").value = obj.province + obj.city + obj.county + obj.street + obj.address;
 
-        document.getElementById("modifyName").innerHTML = '收货人：' + obj.name;
-        document.getElementById("modifyPhone").innerHTML = obj.phone;
-        document.getElementById("modifyAddress").innerHTML = obj.province+obj.city+obj.county+obj.street+obj.address;
+      document.getElementById("modifyName").innerHTML = '收货人：' + obj.name;
+      document.getElementById("modifyPhone").innerHTML = obj.phone;
+      document.getElementById("modifyAddress").innerHTML = obj.province + obj.city + obj.county + obj.street + obj.address;
     };
 
     const div = document.getElementById("btnModify");
     div.onclick = function() {
-        const formData = {
+      const formData = {
         name: document.getElementById("inputName").value.trim(),
         phone: document.getElementById("inputPhone").value.trim(),
         address: document.getElementById("inputAddress").value.trim()
@@ -280,7 +277,6 @@
       document.getElementById("modifyName").innerHTML = '收货人：' + formData.name;
       document.getElementById("modifyPhone").innerHTML = formData.phone;
       document.getElementById("modifyAddress").innerHTML = formData.address;
-    };
-    </script>
+    };</script>
 
 </html>
