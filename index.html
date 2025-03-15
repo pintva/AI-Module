@@ -251,10 +251,10 @@
   <script src="js/pcasCode.js"></script>
   <script src="js/zipCode.js"></script>
   <script src="js/address_parse.js"></script>
-  <script>const btnSmarty = document.getElementById("btnSmarty");
-
-    btnSmarty.onclick = function() {
+  <script>
+    let smarty = function() {
       let smarty = document.getElementById("smarty").value;
+      if(!smarty) return;
       let obj = smart(smarty);
 
       document.getElementById("inputName").value = obj.name;
@@ -266,9 +266,8 @@
       document.getElementById("modifyAddress").innerHTML = obj.province + obj.city + obj.county + obj.street + obj.address;
     };
 
-    const div = document.getElementById("btnModify");
-    div.onclick = function() {
-      const formData = {
+    let commit = function() {
+      let formData = {
         name: document.getElementById("inputName").value.trim(),
         phone: document.getElementById("inputPhone").value.trim(),
         address: document.getElementById("inputAddress").value.trim()
@@ -277,6 +276,11 @@
       document.getElementById("modifyName").innerHTML = '收货人：' + formData.name;
       document.getElementById("modifyPhone").innerHTML = formData.phone;
       document.getElementById("modifyAddress").innerHTML = formData.address;
-    };</script>
+    }
+
+    document.getElementById("smarty").onblur = smarty
+    document.getElementById("btnSmarty").onclick = smarty;
+    document.getElementById("btnModify").onclick = commit;
+  </script>
 
 </html>
