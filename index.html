@@ -267,18 +267,12 @@
     };
 
     let commit = function() {
-      let formData = {
-        name: document.getElementById("inputName").value.trim(),
-        phone: document.getElementById("inputPhone").value.trim(),
-        address: document.getElementById("inputAddress").value.trim()
-      };
-
-      document.getElementById("modifyName").innerHTML = '收货人：' + formData.name;
-      document.getElementById("modifyPhone").innerHTML = formData.phone;
-      document.getElementById("modifyAddress").innerHTML = formData.address;
+      document.getElementById("modifyName").innerHTML = '收货人：' + document.getElementById("inputName").value.trim();
+      document.getElementById("modifyPhone").innerHTML = document.getElementById("inputPhone").value.trim();
+      document.getElementById("modifyAddress").innerHTML = document.getElementById("inputAddress").value.trim();
     }
 
-    document.getElementById("smarty").onblur = smarty
+    document.getElementById("smarty").onblur = smarty;
     document.getElementById("btnSmarty").onclick = smarty;
     document.getElementById("btnModify").onclick = commit;
   </script>
