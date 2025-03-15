@@ -256,14 +256,21 @@
       let smarty = document.getElementById("smarty").value;
       if(!smarty) return;
       let obj = smart(smarty);
+      let address = ''
+
+      address += obj.province ?? '';
+      address += obj.city ?? '';
+      address += obj.county ?? '';
+      address += obj.street ?? '';
+      address += obj.address ?? '';
 
       document.getElementById("inputName").value = obj.name;
       document.getElementById("inputPhone").value = obj.phone;
-      document.getElementById("inputAddress").value = obj.province + obj.city + obj.county + obj.street + obj.address;
+      document.getElementById("inputAddress").value = address;
 
       document.getElementById("modifyName").innerHTML = '收货人：' + obj.name;
       document.getElementById("modifyPhone").innerHTML = obj.phone;
-      document.getElementById("modifyAddress").innerHTML = obj.province + obj.city + obj.county + obj.street + obj.address;
+      document.getElementById("modifyAddress").innerHTML = address;
     };
 
     let commit = function() {
