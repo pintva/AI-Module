@@ -262,13 +262,11 @@
       
         document.getElementById("inputName").value = obj.name;
         document.getElementById("inputPhone").value = obj.phone;
-        document.getElementById("inputAddress").value = obj.province+obj.city+obj.county+obj.address;
+        document.getElementById("inputAddress").value = obj.province+obj.city+obj.county+obj.street+obj.address;
 
         document.getElementById("modifyName").innerHTML = '收货人：' + obj.name;
         document.getElementById("modifyPhone").innerHTML = obj.phone;
-        document.getElementById("modifyAddress").innerHTML = obj.province+obj.city+obj.county+obj.address;
-        
-        form.render();
+        document.getElementById("modifyAddress").innerHTML = obj.province+obj.city+obj.county+obj.street+obj.address;
     };
 
     const div = document.getElementById("btnModify");
